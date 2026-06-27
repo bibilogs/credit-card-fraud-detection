@@ -1,0 +1,7 @@
+# Constants
+CLASS_WEIGHT = 'balanced'
+MAX_DEPTH = 10
+MAX_ITER = 1000
+N_ESTIMATORS = 50
+N_JOBS = -1
+RANDOM_STATE = 42
