@@ -24,12 +24,15 @@ print(results)
 
 
 # Select best-performing model based on PR AUC
-best_model = get_best_model(results)
-best_pipeline = pipelines[best_model]
+best_model_name, best_model = get_best_model(results)
+best_pipeline = pipelines[best_model_name]
+
+print(f"\nBest model: {best_model_name}")
+print(f"PR AUC: {best_model['PR AUC']:.4f}")
 
 
 # Visualize chosen model performance on test data
-plot_confusion_matrix(best_pipeline, X_test, y_test)
-plot_precision_recall(best_pipeline, X_test, y_test)
-plot_roc_curve(best_pipeline, X_test, y_test)
-plot_variable_importance(best_pipeline.named_steps['model'], X_train.columns)
+plot_confusion_matrix(best_pipeline, X_test, y_test, model_name=best_model_name)
+plot_precision_recall(best_pipeline, X_test, y_test, model_name=best_model_name)
+plot_roc_curve(best_pipeline, X_test, y_test, model_name=best_model_name)
+plot_variable_importance(best_pipeline.named_steps['model'], X_train.columns, model_name=best_model_name)

@@ -48,8 +48,7 @@ def compare_models(models, X_train, X_test, y_train, y_test, threshold=0.3):
         results.append(metrics)
     return pd.DataFrame(results)
 
-
 def get_best_model(results, metric='PR AUC'):
-    """Select the best model based on the PR AUC evaluation."""
-    
-    return results.sort_values(metric, ascending=False).iloc[0]["Model"]
+    """Return the best-performing model and its evaluation metrics."""
+    best_row = results.sort_values(metric, ascending=False).iloc[0]
+    return best_row['Model'], best_row
